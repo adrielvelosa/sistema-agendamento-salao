@@ -80,5 +80,5 @@ Siga os passos abaixo para configurar e executar o projeto em seu ambiente local
 
 **2. Clone o Repositório:**
 ```bash
-git clone [URL_DO_SEU_REPOSITORIO_GIT]
-cd [NOME_DA_PASTA_DO_PROJETO]
+git clone (https://github.com/adrielvelosa/sistema-agendamento-salao)]
+cd Projeto Dsin
