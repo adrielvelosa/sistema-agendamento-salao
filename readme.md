@@ -53,7 +53,7 @@ O sistema foi dividido em três grandes áreas: Cliente, Operacional (Leila) e G
 | :---: | :---: |
 | ![Página de Agendamento](prints/agendamento.png) | ![Histórico do Cliente](prints/historico.png) |
 
-| Página de Login (Leila) | Página de Login |
+| Página de Login (Leila) | Página de Login 
 | :---: | :---: |
 | ![Página de Login](prints/login.png)
 
@@ -80,5 +80,5 @@ Siga os passos abaixo para configurar e executar o projeto em seu ambiente local
 
 **2. Clone o Repositório:**
 ```bash
-git clone (https://github.com/adrielvelosa/sistema-agendamento-salao)]
+git clone https://github.com/adrielvelosa/sistema-agendamento-salao
 cd Projeto Dsin
