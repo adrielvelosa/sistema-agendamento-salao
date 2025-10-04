@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Painel de Agendamentos{% endblock %}
+
+{% block content %}
+    <h2>Agendamentos Recebidos</h2>
+    
+    <table style="width:100%;">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Telefone</th>
+                <th>Serviços Agendados</th>
+                <th>Data e Hora</th>
+                <th>Status Atual</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for agendamento in agendamentos %}
+            <tr>
+                <td>{{ agendamento.cliente.nome }}</td>
+                <td>{{ agendamento.cliente.telefone }}</td>
+                <td>
+                    <ul>
+                        {% for servico in agendamento.servicos %}
+                            <li>{{ servico.nome }}</li>
+                        {% else %}
+                            <li>Nenhum serviço</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td>{{ agendamento.data_hora.strftime('%d/%m/%Y às %H:%M') }}</td>
+                <td>{{ agendamento.status }}</td>
+                <td class="actions-cell">
+                    <a href="{{ url_for('alterar_agendamento', agendamento_id=agendamento.id, origem='painel') }}" class="button-link-alt">Alterar</a>
+                    
+                    <form action="{{ url_for('atualizar_status', agendamento_id=agendamento.id) }}" method="POST">
+                        <select name="novo_status">
+                            <option value="Pendente" {% if agendamento.status == 'Pendente' %}selected{% endif %}>Pendente</option>
+                            <option value="Confirmado" {% if agendamento.status == 'Confirmado' %}selected{% endif %}>Confirmado</option>
+                            <option value="Concluído" {% if agendamento.status == 'Concluído' %}selected{% endif %}>Concluído</option>
+                            <option value="Cancelado" {% if agendamento.status == 'Cancelado' %}selected{% endif %}>Cancelado</option>
+                        </select>
+                        <button type="submit">Atualizar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

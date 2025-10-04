@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Alterar Agendamento{% endblock %}
+
+{% block content %}
+    <h2>Alterar seu Agendamento</h2>
+    <p>Modifique os dados abaixo para alterar seu horário.</p>
+
+    <form method="POST" action="{{ url_for('alterar_agendamento', agendamento_id=agendamento.id) }}">
+
+        <input type="hidden" name="origem_form" value="{{ origem }}">
+        
+        <p><strong>Cliente:</strong> {{ agendamento.cliente.nome }}</p>
+        <p><strong>Telefone:</strong> {{ agendamento.cliente.telefone }}</p>
+        <hr>
+
+        <label>Escolha os Novos Serviços:</label><br>
+        {% for servico in todos_os_servicos %}
+            <div>
+                <input type="checkbox" name="servicos_selecionados" value="{{ servico.id }}" id="servico-{{ servico.id }}"
+                
+                {% for servico_agendado in agendamento.servicos %}
+                    {% if servico.id == servico_agendado.id %}
+                        checked
+                    {% endif %}
+                {% endfor %}
+                
+                >
+                <label for="servico-{{ servico.id }}">{{ servico.nome }}</label>
+            </div>
+        {% else %}
+            <p>Nenhum serviço cadastrado.</p>
+        {% endfor %}
+        <br>
+
+        <label for="data_hora">Escolha a Nova Data e Hora:</label><br>
+        <input type="datetime-local" id="data_hora" name="data_hora" 
+               value="{{ agendamento.data_hora.strftime('%Y-%m-%dT%H:%M') }}" required>
+        <br><br>
+
+        <button type="submit">Salvar Alterações</button>
+        <a href="{{ url_for('buscar_historico') }}">Voltar</a>
+    </form>
+{% endblock %}

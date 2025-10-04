@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Gerencial{% endblock %}
+
+{% block content %}
+    <h2>Desempenho da Última Semana</h2>
+    <p>Exibindo dados de <strong>{{ semana_atras.strftime('%d/%m/%Y') }}</strong> até <strong>{{ hoje.strftime('%d/%m/%Y') }}</strong>.</p>
+    
+    <div style="display: flex; gap: 20px; margin-top: 30px; justify-content: space-around;">
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 2px 2px 5px #eee;">
+            <h3 style="margin-top: 0;">Agendamentos Concluídos</h3>
+            <p style="font-size: 2.5em; font-weight: bold; margin: 10px 0; color: #2196F3;">{{ agendamentos_semana }}</p>
+        </div>
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 2px 2px 5px #eee;">
+            <h3 style="margin-top: 0;">Faturamento (Concluídos)</h3>
+            <p style="font-size: 2.5em; font-weight: bold; margin: 10px 0; color: #4CAF50;">R$ {{ "%.2f"|format(faturamento_semana) }}</p>
+        </div>
+        
+        <div style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; text-align: center; box-shadow: 2px 2px 5px #eee;">
+            <h3 style="margin-top: 0;">Serviço Mais Popular</h3>
+            <p style="font-size: 2.5em; font-weight: bold; margin: 10px 0; color: #ff9800;">{{ servico_popular }}</p>
+        </div>
+
+    </div>
+{% endblock %}

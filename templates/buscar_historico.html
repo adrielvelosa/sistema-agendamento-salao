@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Meu Histórico{% endblock %}
+
+{% block content %}
+    <h2>Consulte seu Histórico de Agendamentos</h2>
+    <p>Digite seu número de telefone (o mesmo usado no agendamento) para ver seus horários.</p>
+
+    <form method="GET" action="{{ url_for('mostrar_historico') }}">
+        <label for="telefone">Seu Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required placeholder="Ex: 11987654321">
+        <button type="submit">Buscar</button>
+    </form>
+{% endblock %}

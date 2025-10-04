@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{% block title %}Salão da Leila{% endblock %}</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Salão de Beleza da Leila</h1>
+         <nav>
+    <a href="{{ url_for('agendar') }}">Fazer Agendamento</a>
+    <a href="{{ url_for('buscar_historico') }}">Meu Histórico</a>
+    {% if current_user.is_authenticated %}
+        <a href="{{ url_for('painel_leila') }}">Painel</a>
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('logout') }}">Sair</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Login (Admin)</a>
+    {% endif %}
+</nav>
+    </header>
+
+    <main>
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert-{{ category }}" style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6;">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Salão da Leila.</p>
+    </footer>
+
+</body>
+</html>

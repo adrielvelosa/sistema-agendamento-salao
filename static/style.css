@@ -1,0 +1,164 @@
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+   
+    background-image: url('/static/images/fundo_agendamento.jpg'); 
+    background-size: cover;          
+    background-position: center;    
+    background-attachment: fixed;    
+}
+
+.container {
+    max-width: 960px;  
+    margin: 20px auto; 
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.747); 
+    border-radius: 8px;      
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}
+
+header {
+    background-color: #c5c47d;     
+    color: white;                   
+    padding: 20px 40px;             
+    text-align: center;            
+}
+
+
+main {
+    padding: 20px 40px; 
+}
+
+table {
+    width: 100%;                 
+    border-collapse: collapse;      
+    margin-top: 20px;               
+    background-color: white;        
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+}
+
+
+th, td {
+    padding: 12px 15px;             
+    text-align: left;               
+    border-bottom: 1px solid #ddd;  
+}
+
+
+th {
+    background-color: #f2f2f2;      
+    font-weight: bold;              
+}
+
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+main {
+    padding: 0; 
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="datetime-local"],
+select {
+    width: 100%;                  
+    padding: 10px;                 
+    margin-bottom: 15px;            
+    border: 1px solid #ccc;         
+    border-radius: 4px;             
+    box-sizing: border-box;         
+}
+
+button {
+    background-color: #524419;     
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;               
+    font-size: 16px;
+}
+
+
+button:hover {
+    background-color: #493d1b;      
+}
+
+.container h2 {
+    text-align: center; 
+    color: #52481c;      
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f2f2f2; 
+}
+
+
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    color: white;                
+    text-decoration: none;       
+    padding: 10px 15px;           
+    margin: 0 5px;                
+    border-radius: 4px;          
+    transition: background-color 0.3s; 
+}
+
+
+nav a:hover {
+    background-color: #463e1a; 
+}
+
+.actions-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.actions-cell form {
+    margin: 0;
+    display: flex;       
+    align-items: center; 
+    gap: 5px;            
+}
+
+.actions-cell select {
+    padding: 8px;
+    width: auto;
+    margin: 0;
+}
+
+.actions-cell button {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+
+.button-link-alt {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: white;
+    background-color: #1565c0; 
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.button-link-alt:hover {
+    background-color: #0d47a1; 
+}
+
+
+tbody tr:hover {
+    background-color: #e3f2fd; 
+}

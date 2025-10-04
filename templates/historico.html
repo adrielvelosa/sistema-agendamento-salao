@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}Seu Histórico de Agendamentos{% endblock %}
+
+{% block content %}
+    {% if cliente %}
+        <h2>Olá, {{ cliente.nome }}!</h2>
+        <p>Estes são seus agendamentos registrados conosco:</p>
+
+        <table border="1" style="width:100%;">
+    <thead>
+        <tr>
+            <th>Data e Hora</th>
+            <th>Serviços</th>
+            <th>Status</th>
+            <th>Ações</th> </tr>
+    </thead>
+    <tbody>
+        {% for agendamento in cliente.agendamentos %}
+        <tr>
+            <td>{{ agendamento.data_hora.strftime('%d/%m/%Y às %H:%M') }}</td>
+            <td>
+                <ul>
+                {% for servico in agendamento.servicos %}
+                    <li>{{ servico.nome }}</li>
+                {% endfor %}
+                </ul>
+            </td>
+            <td>{{ agendamento.status }}</td>
+            
+            <td>
+                {% if agendamento.status != 'Cancelado' and agendamento.data_hora > limite_cancelamento %} 
+                    
+                     <a href="{{ url_for('alterar_agendamento', agendamento_id=agendamento.id) }}">Alterar</a>
+
+                    <form action="{{ url_for('cancelar_agendamento', agendamento_id=agendamento.id) }}" method="POST" style="display:inline; margin-left: 10px">
+                        <button type="submit" onclick="return confirm('Tem certeza que deseja cancelar este agendamento?');">Cancelar</button>
+                    </form>
+
+                {% elif agendamento.status == 'Cancelado' %}
+                    -
+                {% else %}
+                    <small>Ligue para o salão para cancelar</small>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    
+    {% else %}
+        <h2>Nenhum Cliente Encontrado</h2>
+        <p>Não encontramos nenhum agendamento para o telefone informado.</p>
+        <a href="{{ url_for('buscar_historico') }}">Tentar novamente</a>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('buscar_historico') }}">Fazer uma nova busca</a>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Novo Agendamento{% endblock %}
+
+{% block content %}
+
+    {% if sugestao %}
+    <div style="background-color: #e7f3fe; border-left: 6px solid #2196F3; padding: 15px; margin-bottom: 20px;">
+        <h4><strong>Sugestão!</strong></h4>
+        <p>{{ sugestao }}</p>
+    </div>
+    {% endif %}
+
+    <h2>Faça seu Agendamento</h2>
+    <h2>Faça um Novo Agendamento</h2>
+    
+    
+    <form method="POST" action="{{ url_for('agendar') }}">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="{{ nome_preenchido or '' }}" required>
+        <br><br>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" value="{{ telefone_preenchido or '' }}" required> 
+        <br><br>
+
+        <label>Escolha os Serviços:</label><br>
+        {% for servico in servicos %}
+            <div>
+                <input type="checkbox" name="servicos_selecionados" value="{{ servico.id }}" id="servico-{{ servico.id }}">
+                <label for="servico-{{ servico.id }}">{{ servico.nome }} - R$ {{ "%.2f"|format(servico.preco) }}</label>
+            </div>
+        {% else %}
+            <p>Nenhum serviço cadastrado no momento.</p>
+        {% endfor %}
+        <br>
+
+        <label for="data_hora">Data e Hora:</label>
+        <input type="datetime-local" id="data_hora" name="data_hora" required>
+        <br><br>
+
+        <button type="submit">Confirmar Agendamento</button>
+    </form>
+{% endblock %}
