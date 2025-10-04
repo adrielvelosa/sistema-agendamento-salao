@@ -54,7 +54,7 @@ O sistema foi dividido em três grandes áreas: Cliente, Operacional (Leila) e G
 | ![Página de Agendamento](prints/agendamento.png) | ![Histórico do Cliente](prints/historico.png) |
 
 | Página de Login (Leila)
-| ;---; | ;---;
+| ;---; | ;---; |
 | ![Página de Login](prints/login.png)
 
 
